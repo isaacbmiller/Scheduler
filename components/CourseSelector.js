@@ -3,7 +3,7 @@ import {StyleSheet, View, } from 'react-native';
 import Course from './Course'
 import {hasConflict} from '../Utils/course'
 
-const CourseSelector = ({courses}) => {
+const CourseSelector = ({courses, view}) => {
     const [selected, setSelected] = useState([]);
 
     const toggle = course => setSelected(selected => (
@@ -18,6 +18,7 @@ const CourseSelector = ({courses}) => {
                 isDisabled={hasConflict(course, selected)}
                 select={toggle}
                 isSelected={selected.includes(course)}
+                view={view}
             />
           ))
         }
@@ -30,7 +31,7 @@ const CourseSelector = ({courses}) => {
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
       },
   });
 
